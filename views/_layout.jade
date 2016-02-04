@@ -1,0 +1,9 @@
+doctype html
+html
+  include ./partials/mixins.jade
+  head
+    title= title
+    +styles
+  body
+    block content
+    +analytics

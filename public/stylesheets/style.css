@@ -1,0 +1,95 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  width: auto;
+  height: auto;
+  border: 3px grey dotted;
+  padding: 5px;
+}
+
+body a {
+  color: salmon;
+  text-decoration: none;
+}
+
+body a:active,
+body a:hover {
+  color: #e41f08;
+}
+
+.container {
+  padding: 10px 20px 20px 20px;
+}
+
+.title {
+  color: cornflowerblue;
+  border: 2px solid;
+  width: 3em;
+  padding-left: 0.25em;
+}
+
+footer {
+  height: 20px;
+  bottom: 0;
+  position: absolute;
+  padding: 5px;
+  margin: 5px;
+  text-align: center;
+}
+
+footer a {
+  font-size: smaller;
+}
+
+#message-list ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+#message-list ul li span {
+  margin: 0 40px;
+}
+
+#message-list ul li span:first-child {
+  margin: 0 40px 0 0;
+}
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  width: auto;
+  height: auto;
+  border: 3px grey dotted;
+  padding: 5px;
+}
+
+body a {
+  color: salmon;
+  text-decoration: none;
+}
+
+body a:active,
+body a:hover {
+  color: #e41f08;
+}
+
+.container {
+  padding: 10px 20px 20px 20px;
+}
+
+.title {
+  color: cornflowerblue;
+  border: 2px solid;
+  width: 3em;
+  padding-left: 0.25em;
+}
+
+footer {
+  height: 20px;
+  bottom: 0;
+  position: absolute;
+  padding: 5px;
+  margin: 5px;
+  text-align: center;
+}
+
+footer a {
+  font-size: smaller;
+}

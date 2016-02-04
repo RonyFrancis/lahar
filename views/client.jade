@@ -1,0 +1,33 @@
+extends _layout
+
+include ./partials/mixins.jade
+
+block content
+  header
+    .container
+      h1.title #[a(href= url) #{title}]
+      h5.version #{version} 
+      p.under-title #[b #{title}] is minimal RESTful API for #[a(href="https://github.com/bwilcox-1234/ChatScript/", target="_blank") ChatScript]
+      p this is a test page 
+  
+  #end-points
+    .container
+      p there is a single endpoint available by default:
+      p #{url}/api/messages [POST]
+      
+  
+  #post-message
+    .container
+      form(id="new-message", action="/api/messages")
+        input(id="form-message", type="text", placeholder="message", required="true", autocomplete="off")
+        button(type="submit") post
+  #message-list
+    .container
+      p#user-message
+      p#chatbot-message
+      ul
+      
+  footer
+    .container
+      a(href="http://samuelcousin.com") made with transient ❤
+    +scripts
