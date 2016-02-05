@@ -7,18 +7,21 @@ block content
       h5.version #{version} 
       p.under-title #[b #{title}] is minimal RESTful API for #[a(href="https://github.com/bwilcox-1234/ChatScript/", target="_blank") ChatScript]. For more details, checkout the project on #[a(href="http://github.com/kuzyn/", target="_blank") github]
   
-  #server-info
+  #server-api
     .container
       h4 API
       p There is few endpoints available by default:
-      p #[a(href="#{url}/api/messages") #{url}/api/messages #[b POST]]
+      p #[a(href="#{url}/api/message") #{url}/api/message #[b POST]]
+      p #[a(href="#{url}/api/bot/reset") #{url}/api/bot/reset #[b POST]]
   
-  #post-message
+  #server-console
     .container
       h4 Console
-      form(id="new-message", class="form-group" action="/api/messages")
-        input(id="form-message", class="form-control" type="text", placeholder="message", required="true", autocomplete="off")
-        button(type="submit", class="btn btn-default") post
+      form(id="new-message", class="form-group")
+        input(id="form-message", class="form-control" type="text", placeholder="message", autocomplete="off")
+        button(id="#reset", type="submit", class="btn btn-default" url="/api/bot/reset") reset
+        button(id="#send-message", type="submit", class="btn btn-default" url="/api/message") post
+        
 
   #messages-list
     .container

@@ -5,7 +5,8 @@ var app = express();
 var ip = require('ip');
 
 // API routes
-var messages = require('./routes/messages');
+var message = require('./routes/message');
+var bot = require('./routes/bot');
 
 // Client page route
 var client = require('./routes/client');
@@ -27,7 +28,8 @@ app.set('view engine', 'jade');
 app.use(express.static(path.join(__dirname, 'public')));
 
 // API endpoints filename (in /routes)
-app.use('/api/messages', messages);
+app.use('/api/message', message);
+app.use('/api/bot', bot);
 
 // App landing filename (in /routes)
 app.use('/', client);
