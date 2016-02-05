@@ -1,33 +1,32 @@
-extends _layout
-
-include ./partials/mixins.jade
+extends ./_layout
 
 block content
   header
     .container
       h1.title #[a(href= url) #{title}]
       h5.version #{version} 
-      p.under-title #[b #{title}] is minimal RESTful API for #[a(href="https://github.com/bwilcox-1234/ChatScript/", target="_blank") ChatScript]
-      p this is a test page 
+      p.under-title #[b #{title}] is minimal RESTful API for #[a(href="https://github.com/bwilcox-1234/ChatScript/", target="_blank") ChatScript]. For more details, checkout the project on #[a(href="http://github.com/kuzyn/", target="_blank") github]
   
-  #end-points
+  #server-info
     .container
-      p there is a single endpoint available by default:
-      p #{url}/api/messages [POST]
-      
+      h4 API
+      p There is few endpoints available by default:
+      p #[a(href="#{url}/api/messages") #{url}/api/messages #[b POST]]
   
   #post-message
     .container
-      form(id="new-message", action="/api/messages")
-        input(id="form-message", type="text", placeholder="message", required="true", autocomplete="off")
-        button(type="submit") post
-  #message-list
+      h4 Console
+      form(id="new-message", class="form-group" action="/api/messages")
+        input(id="form-message", class="form-control" type="text", placeholder="message", required="true", autocomplete="off")
+        button(type="submit", class="btn btn-default") post
+
+  #messages-list
     .container
       p#user-message
       p#chatbot-message
-      ul
-      
+  
   footer
     .container
-      a(href="http://samuelcousin.com") made with transient ❤
-    +scripts
+      a(href="http://samuelcousin.com") made with a transient ❤
+    script(defer, rel='script/text', src='https://code.jquery.com/jquery-2.1.4.min.js')
+    script(defer, rel='script/text', src='js/client.js')

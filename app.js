@@ -1,49 +1,45 @@
 var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
+var app = express();
+var ip = require('ip');
 
 // API routes
 var messages = require('./routes/messages');
 
-// Client route
+// Client page route
 var client = require('./routes/client');
-
-// Boom
-var app = express();
 
 // Middlewares
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Local app config
-app.locals.title = 'ambar';
+app.locals.title = 'Lahar';
 app.locals.version = '0.0.1';
-app.locals.email = 'hello@samuelcousin.com';
-app.locals.url = 'http://localhost:4000';
+app.locals.url = 'http://' + ip.address();
 
-// view engine setup
+// View engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+// Public folder setup
 app.use(express.static(path.join(__dirname, 'public')));
 
-// API endpoints
+// API endpoints filename (in /routes)
 app.use('/api/messages', messages);
 
-// App landing
+// App landing filename (in /routes)
 app.use('/', client);
 
-// catch 404 and forward to error handler
+// Catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
 
-// error handlers
-
-// development error handler
-// will print stacktrace
+// Error handler development (will print stacktrace)
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
@@ -54,8 +50,7 @@ if (app.get('env') === 'development') {
   });
 }
 
-// production error handler
-// no stacktraces leaked to user
+// Production error handler (no stacktraces leaked to user)
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {

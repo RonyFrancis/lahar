@@ -1,25 +1,21 @@
 {
-  "name": "chatscript-rest",
+  "name": "lahar",
   "version": "0.0.1",
   "private": false,
+  "license": "MIT",
   "scripts": {
-    "serve": "node ./bin/www",
+    "serve": "nodemon ./bin/www",
     "serve:develop": "nodemon ./bin/www & gulp"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
-    "ember": "^1.0.0-pre.2",
     "express": "~4.13.1",
-    "handlebars": "^4.0.5",
+    "ip": "^1.1.0",
     "jade": "~1.11.0",
-    "jquery": "^2.2.0",
-    "lodash": "^3.10.1",
-    "socket.io": "^1.4.5"
+    "jquery": "^2.2.0"
   },
   "devDependencies": {
     "browser-sync": "^2.10.0",
-    "gulp": "^3.9.0",
-    "gulp-concat-css": "^2.2.0",
-    "gulp-sass": "^2.1.1"
+    "gulp": "^3.9.0"
   }
 }
