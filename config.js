@@ -8,7 +8,7 @@ Config.prototype.remote = function() {
       host: "localhost",
       allowHalfOpen: true
     },
-    bot: "HARRY"
+    name: "HARRY"
   };
 };
 

@@ -5,31 +5,41 @@ block content
     .container
       h1.title #[a(href= url) #{title}]
       h5.version #{version} 
-      p.under-title #[b #{title}] is minimal RESTful API for #[a(href="https://github.com/bwilcox-1234/ChatScript/", target="_blank") ChatScript]. For more details, checkout the project on #[a(href="http://github.com/kuzyn/", target="_blank") github]
+      .col-md-12
+        p.under-title #[b #{title}] is minimal RESTful API for #[a(href="https://github.com/bwilcox-1234/ChatScript/", target="_blank") ChatScript]. For more details, checkout the project on #[a(href="http://github.com/kuzyn/", target="_blank") github]
   
   #server-api
     .container
-      h4 API
-      p There is few endpoints available by default:
-      p #[a(href="#{url}/api/message") #{url}/api/message #[b POST]]
-      p #[a(href="#{url}/api/bot/reset") #{url}/api/bot/reset #[b POST]]
+      h4 Endpoints
+      .col-md-6
+        p #[a(href="#{url}/api/message") #{url}/api/message #[b POST]] => return {}
+        p #[a(href="#{url}/api/command/reset") #{url}/api/command/reset #[b POST]] => return 200
+        p #[a(href="#{url}/api/command/reset") #{url}/api/command/initialize #[b GET]] => return 200
+    
+  #server-config
+    .container
+      h4 Config
+      form(id="config", class="form-group col-md-4")
+        input(id="config-ip", class="form-control" type="text", placeholder="host",value="#{server.host}", autocomplete="off")    
+        input(id="config-port", class="form-control" type="text", placeholder="port",value="#{server.port}", autocomplete="off")    
+        input(id="config-name", class="form-control" type="text", placeholder="bot",value="#{server.bot}", autocomplete="off")    
   
   #server-console
     .container
       h4 Console
-      form(id="new-message", class="form-group")
+      form(id="new-message", class="form-group col-md-4")
         input(id="form-message", class="form-control" type="text", placeholder="message", autocomplete="off")
-        button(id="#reset", type="submit", class="btn btn-default" url="/api/bot/reset") reset
+        button(id="#reset", type="submit", class="btn btn-default" url="/api/command/reset") reset
         button(id="#send-message", type="submit", class="btn btn-default" url="/api/message") post
-        
 
   #messages-list
     .container
-      p#user-message
-      p#chatbot-message
+      .col-md-6
+        p#user-message
+        p#chatbot-message
   
   footer
-    .container
-      a(href="http://samuelcousin.com") made with a transient ❤
     script(defer, rel='script/text', src='https://code.jquery.com/jquery-2.1.4.min.js')
     script(defer, rel='script/text', src='js/client.js')
+    .container
+      a(href="http://samuelcousin.com") made with a transient ❤

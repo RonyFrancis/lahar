@@ -19,8 +19,9 @@ body a:hover {
   padding: 10px 20px 20px 20px;
 }
 
-#new-message {
-  width: 20%;
+#user-message,
+#chatbot-message {
+  height: 1em;
 }
 
 .title {

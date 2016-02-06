@@ -9,20 +9,18 @@ var config = require('../config.js');
 router.post('/', function(req, res) {
   var msg = req.body.message || ' ';
   var payload = req.connection.remoteAddress + '\x00' +
-                config.remote().bot + '\x00' +
+                config.remote().name + '\x00' +
                 msg + '\x00';
   var remoteSocket = net.createConnection(config.remote().server, function() {
       // On receive data from remote
       this.on('data', function(data) {
         console.log(data.toString());
-        res.send(data.toString());
+        res.json({'response': data.toString()});
       });
       this.on('close', function(had_error) {
         if (had_error) {
-          console.log('close + error');
           res.sendStatus(503);
         }
-        console.log('close + 200');
         res.sendStatus(200);
       });
   })
@@ -32,11 +30,10 @@ router.post('/', function(req, res) {
     });
   })
   .on('end', function() {
-    // console.log('end');
+    // On socket end
   })
   .on("error", function(err) {
     // On remote down
-    console.log(err);
     res.sendStatus(503);
   });
 });

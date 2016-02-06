@@ -3,22 +3,29 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var app = express();
 var ip = require('ip');
+var config = require('./config.js');
 
-// API routes
+// Local app config
+app.locals = {
+  title : 'Lahar',
+  version : '0.0.1',
+  url : 'http://' + ip.address(),
+  server : {
+    host : config.remote().server.host,
+    port : config.remote().server.port,
+    name : config.remote().name
+  }
+};
+
+// Routes
+var client = require('./routes/client'); // Client page route
+
 var message = require('./routes/message');
-var bot = require('./routes/bot');
-
-// Client page route
-var client = require('./routes/client');
+var command = require('./routes/command');
 
 // Middlewares
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
-// Local app config
-app.locals.title = 'Lahar';
-app.locals.version = '0.0.1';
-app.locals.url = 'http://' + ip.address();
 
 // View engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -27,12 +34,11 @@ app.set('view engine', 'jade');
 // Public folder setup
 app.use(express.static(path.join(__dirname, 'public')));
 
-// API endpoints filename (in /routes)
-app.use('/api/message', message);
-app.use('/api/bot', bot);
+// Attach views
+app.use('/', client); // Client page view
 
-// App landing filename (in /routes)
-app.use('/', client);
+app.use('/api/message', message);
+app.use('/api/command', command);
 
 // Catch 404 and forward to error handler
 app.use(function(req, res, next) {
