@@ -1,14 +1,46 @@
 # Description
-**Lahar** is a small nodejs/Express proxy that create RESTful endpoints to communicate with ChatScript. You can host it on the same server as ChatScript or elsewhere.
+**Lahar** is a small nodejs/Express proxy that creates RESTful endpoints to communicate with ChatScript. You can host it on the same server as ChatScript or elsewhere.
 
-Its goal is to provide URI that can be reached across different devices using standard HTTP requests. In other words, **Lahar** takes care of the socket negotiation, so you can communicate with ChatScript using POST and GET on your defined endpoints. It also allows you to interact with the proxied data on the fly to do analysis, custom logging, analytics, etc.
+Its goal is to provide URI that can be reached across different devices using standard HTTP requests. In other words, **Lahar** takes care of the socket negotiation, so you can communicate with ChatScript using POST and GET. As a collateral, it also allows you to interact with the proxied data on the fly to run analysis, custom logging, analytics, etc.
 
+**Lahar is a WIP and should only be used as such. Please do report bugs and features request. Of course, all pull request are super welcome.** :ice_cream: :squirrel:
 # Perks
-* Accept XHR requests
+* Asynchronous XHR requests
 * Return normalized JSON
 * Improved error handling
 * Analytics
 * Test interface
 
 # Installation
-Requirements are Nodejs ^5.5.0
+**nodejs ^5.5.0 AND nodemon ^1.8.1 is required on the host system. Preview version of nodejs might work but just haven't been tested so far.**  
+
+First off clone the repo to your server's directory:  
+`git clone git@github.com:kuzyn/lahar.git`  
+`cd lahar`
+
+Then edit your server configuration in the config.js file:
+```javascript
+{
+    server: {
+      port: 1024,
+      host: "localhost",
+      allowHalfOpen: true
+    },
+    name: "HARRY"
+  }
+```
+
+Start Lahar:
+`npm run serve`
+
+Yay. You can now visit your server and see the client.
+
+# License
+The MIT License (MIT)
+Copyright (c) 2016 Samuel Cousin
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

@@ -1,7 +1,5 @@
 var gulp = require('gulp');
 var browserSync = require('browser-sync');
-var sass = require('gulp-sass');
-var concatCss = require('gulp-concat-css');
 
 gulp.task('browser-sync', function () {
   browserSync({
